@@ -25,7 +25,7 @@ export function Hero() {
             <div className="bg-sky-800 px-3 py-2 text-xs uppercase tracking-wide">
               Eyebrow / Category
             </div>
-            <div className="bg-sky-800 px-3 py-3 text-base font-semibold sm:py-4 sm:text-lg md:text-2xl">
+            <div className="bg-sky-800 px-3 py-3 font-heading text-base font-semibold sm:py-4 sm:text-lg md:text-2xl">
               Main Headline
             </div>
             <div className="bg-sky-800 px-3 py-2 text-xs sm:py-3 sm:text-sm">

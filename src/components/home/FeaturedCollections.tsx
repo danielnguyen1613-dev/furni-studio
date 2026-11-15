@@ -7,7 +7,7 @@ export function FeaturedCollections() {
     <section className="w-full bg-orange-400 px-4 py-8 md:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div className="bg-orange-600 px-3 py-2 text-lg font-semibold text-white md:text-xl">
+          <div className="bg-orange-600 px-3 py-2 font-heading text-lg font-semibold text-white md:text-xl">
             Featured Collections
           </div>
           <div className="bg-orange-600 px-3 py-2 text-sm text-white">
