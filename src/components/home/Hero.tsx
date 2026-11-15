@@ -1,25 +1,18 @@
-import { Header } from "./Header";
+import Image from "next/image";
 
-const HERO_PLACEHOLDER =
-  "data:image/svg+xml," +
-  encodeURIComponent(`
-    <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
-      <rect width="1600" height="900" fill="#8b5cf6"/>
-      <text x="800" y="450" fill="#ffffff" font-family="sans-serif" font-size="48" text-anchor="middle" dominant-baseline="middle">
-        Hero Image Placeholder
-      </text>
-    </svg>
-  `);
+import { Header } from "./Header";
 
 export function Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden bg-violet-500">
       {/* Hero image — covers entire hero */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={HERO_PLACEHOLDER}
-        alt="Hero furniture"
-        className="absolute inset-0 z-0 h-full w-full object-cover"
+      <Image
+        src="/images/hero.jpg"
+        alt="Modern living room with modular sofa"
+        fill
+        priority
+        sizes="100vw"
+        className="z-0 object-cover"
       />
 
       {/* Header overlays the image — no extra vertical space */}
