@@ -1,41 +1,8 @@
 import { ArrowRight } from "lucide-react";
 
-import { ProductCard } from "./ProductCard";
+import { products } from "@/data/products";
 
-const products = [
-  {
-    name: "Modular Sofa",
-    price: "$1,690",
-    rating: 4.8,
-    reviewCount: 128,
-    imageSrc: "/images/products/modular-sofa.webp",
-    href: "#product-modular-sofa",
-  },
-  {
-    name: "Lounge Chair",
-    price: "$590",
-    rating: 4.7,
-    reviewCount: 86,
-    imageSrc: "/images/products/lounge-chair.webp",
-    href: "#product-lounge-chair",
-  },
-  {
-    name: "Coffee Table",
-    price: "$390",
-    rating: 4.8,
-    reviewCount: 74,
-    imageSrc: "/images/products/coffee-table.webp",
-    href: "#product-coffee-table",
-  },
-  {
-    name: "Arc Floor Lamp",
-    price: "$290",
-    rating: 4.7,
-    reviewCount: 52,
-    imageSrc: "/images/products/arc-floor-lamp.webp",
-    href: "#product-arc-floor-lamp",
-  },
-] as const;
+import { ProductCard } from "./ProductCard";
 
 export function BestSellers() {
   return (
@@ -70,13 +37,13 @@ export function BestSellers() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
           {products.map((product) => (
             <ProductCard
-              key={product.name}
+              key={product.slug}
               name={product.name}
               price={product.price}
               rating={product.rating}
               reviewCount={product.reviewCount}
               imageSrc={product.imageSrc}
-              href={product.href}
+              href={`/products/${product.slug}`}
             />
           ))}
         </div>
