@@ -1,7 +1,11 @@
+import { ArExperience } from "@/components/home/ArExperience";
 import { BestSellers } from "@/components/home/BestSellers";
+import { CustomerReviews } from "@/components/home/CustomerReviews";
 import { FeatureBenefits } from "@/components/home/FeatureBenefits";
 import { FeaturedCollections } from "@/components/home/FeaturedCollections";
+import { Footer } from "@/components/home/Footer";
 import { Hero } from "@/components/home/Hero";
+import { Newsletter } from "@/components/home/Newsletter";
 
 export default function Home() {
   return (
@@ -11,7 +15,11 @@ export default function Home() {
         <FeatureBenefits />
         <FeaturedCollections />
         <BestSellers />
+        <ArExperience />
+        <CustomerReviews />
+        <Newsletter />
       </main>
+      <Footer />
     </div>
   );
 }
