@@ -1,4 +1,4 @@
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, MoveLeft, MoveRight, Play } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -40,18 +40,18 @@ export function Hero() {
                 size="lg"
                 nativeButton={false}
                 render={<a href="#products" />}
-                className="h-10 gap-2 rounded-full border-transparent bg-white px-6 pr-5 font-sans text-sm font-medium tracking-wide text-neutral-900 hover:bg-white/90 sm:h-11 sm:px-7 sm:pr-6 sm:text-sm"
+                className="h-10 gap-2 rounded-full border-transparent bg-primary-foreground px-6 pr-5 font-sans text-sm font-medium tracking-wide text-primary hover:bg-primary-foreground/90 sm:h-11 sm:px-7 sm:pr-6 sm:text-sm"
               >
                 Explore Products
                 <ArrowRight className="size-4" aria-hidden />
               </Button>
               <a
                 href="#see-in-3d"
-                className="inline-flex items-center gap-3 font-sans text-sm font-medium tracking-wide text-white/90 transition-opacity duration-300 hover:opacity-70 sm:text-sm"
+                className="inline-flex items-center gap-3 font-sans text-sm font-medium tracking-wide text-primary-foreground/90 transition-opacity duration-300 hover:opacity-70 sm:text-sm"
               >
-                <span className="inline-flex size-8 items-center justify-center rounded-full bg-white/15 ring-1 ring-white/40 backdrop-blur-sm sm:size-9">
+                <span className="inline-flex size-8 items-center justify-center rounded-full bg-primary-foreground/15 ring-1 ring-primary-foreground/40 backdrop-blur-sm sm:size-9">
                   <Play
-                    className="size-3 fill-white text-white sm:size-3.5"
+                    className="size-3 fill-primary-foreground text-primary-foreground sm:size-3.5"
                     aria-hidden
                   />
                 </span>
@@ -61,15 +61,46 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="pointer-events-auto mx-auto mt-4 flex w-full max-w-7xl items-center justify-between gap-4 bg-violet-700/80 px-4 py-3 text-white">
-          <div className="flex gap-2 text-sm">
-            <span className="bg-violet-900 px-2 py-1 underline">01</span>
-            <span className="bg-violet-800 px-2 py-1">02</span>
-            <span className="bg-violet-800 px-2 py-1">03</span>
+        <div className="pointer-events-auto mx-auto mt-4 flex w-full max-w-7xl items-center justify-between gap-4 py-3 text-primary-foreground">
+          <div className="flex items-center gap-6 font-sans text-sm tracking-wide">
+            <button
+              type="button"
+              aria-label="Slide 1"
+              aria-current="true"
+              className="border-b-2 border-primary-foreground px-2 pb-2 font-medium text-primary-foreground"
+            >
+              01
+            </button>
+            <button
+              type="button"
+              aria-label="Slide 2"
+              className="border-b-2 border-transparent px-2 pb-2 font-medium text-primary-foreground/50 transition-colors hover:text-primary-foreground/80"
+            >
+              02
+            </button>
+            <button
+              type="button"
+              aria-label="Slide 3"
+              className="border-b-2 border-transparent px-2 pb-2 font-medium text-primary-foreground/50 transition-colors hover:text-primary-foreground/80"
+            >
+              03
+            </button>
           </div>
           <div className="flex gap-2">
-            <div className="bg-violet-900 px-3 py-1 text-sm">Prev</div>
-            <div className="bg-violet-900 px-3 py-1 text-sm">Next</div>
+            <button
+              type="button"
+              aria-label="Previous slide"
+              className="inline-flex size-9 items-center justify-center rounded-full bg-primary/55 text-primary-foreground backdrop-blur-md transition-colors hover:bg-primary/70"
+            >
+              <MoveLeft className="size-4" strokeWidth={1.75} aria-hidden />
+            </button>
+            <button
+              type="button"
+              aria-label="Next slide"
+              className="inline-flex size-9 items-center justify-center rounded-full bg-primary/55 text-primary-foreground backdrop-blur-md transition-colors hover:bg-primary/70"
+            >
+              <MoveRight className="size-4" strokeWidth={1.75} aria-hidden />
+            </button>
           </div>
         </div>
       </div>
