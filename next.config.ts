@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
+  transpilePackages: ["three"],
   images: {
     // Next 16 defaults to [75] only; other quality props are coerced to 75
     qualities: [75, 95],
