@@ -1,5 +1,7 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 
+import { Product3DViewer } from "@/components/product/Product3DViewer";
 import {
   getAllProductSlugs,
   getProductBySlug,
@@ -9,9 +11,11 @@ export function generateStaticParams() {
   return getAllProductSlugs().map((slug) => ({ slug }));
 }
 
-export default async function ProductDetailPage({
+async function ProductSlugGuard({
   params,
-}: PageProps<"/products/[slug]">) {
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const product = getProductBySlug(slug);
 
@@ -19,6 +23,12 @@ export default async function ProductDetailPage({
     notFound();
   }
 
+  return null;
+}
+
+export default function ProductDetailPage({
+  params,
+}: PageProps<"/products/[slug]">) {
   return (
     <div className="flex min-h-full w-full flex-col">
       {/* Header */}
@@ -32,8 +42,8 @@ export default async function ProductDetailPage({
         <section className="grid gap-4 md:gap-6 lg:grid-cols-2">
           {/* Product Media Area */}
           <div className="flex flex-col gap-3 bg-yellow-400 p-3 md:gap-4 md:p-4">
-            {/* Main image */}
-            <div className="aspect-[4/3] w-full bg-cyan-400" />
+            {/* Product visual / 3D viewer */}
+            <Product3DViewer />
             {/* Thumbnails */}
             <div className="grid grid-cols-4 gap-2 md:gap-3">
               <div className="aspect-square bg-cyan-300" />
@@ -78,6 +88,10 @@ export default async function ProductDetailPage({
           <div className="min-h-48 bg-cyan-400 md:min-h-64" />
         </section>
       </div>
+
+      <Suspense fallback={null}>
+        <ProductSlugGuard params={params} />
+      </Suspense>
     </div>
   );
 }
