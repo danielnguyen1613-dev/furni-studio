@@ -11,7 +11,7 @@ const HOTSPOTS = [
 
 export function HeroImageContainer() {
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden bg-neutral-900">
+    <div className="absolute inset-0 z-0 overflow-hidden bg-primary">
       {/*
         Composition frame keeps the image's 16:9 ratio while always covering
         the hero. Parent overflow crops the left side on smaller viewports.

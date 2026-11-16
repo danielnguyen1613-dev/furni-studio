@@ -144,3 +144,109 @@
     @apply font-heading;
   }
 }
+
+/* Soft diagonal sun ray — ambient wash, mid → right (not a visible streak) */
+.hero-sunbeam {
+  position: absolute;
+  top: -40%;
+  left: 0;
+  width: min(42vw, 28rem);
+  height: 180%;
+  pointer-events: none;
+  transform: translate3d(40vw, 0, 0) rotate(6deg);
+  transform-origin: center center;
+  opacity: 0;
+  mix-blend-mode: soft-light;
+  will-change: transform, opacity;
+  animation: hero-sunbeam-pass 8s ease-in-out infinite;
+}
+
+.hero-sunbeam__streak {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Broad warm spill — the body of the ray */
+.hero-sunbeam__streak--wide {
+  left: 0;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgb(255 236 210 / 0) 12%,
+    rgb(255 240 220 / 0.22) 38%,
+    rgb(255 246 230 / 0.32) 50%,
+    rgb(255 240 220 / 0.22) 62%,
+    rgb(255 236 210 / 0) 88%,
+    transparent 100%
+  );
+  filter: blur(48px);
+  opacity: 0.55;
+}
+
+/* Slightly denser core — still diffuse, not a hard line */
+.hero-sunbeam__streak--thin {
+  left: 28%;
+  width: 44%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgb(255 248 235 / 0) 18%,
+    rgb(255 250 240 / 0.2) 42%,
+    rgb(255 252 245 / 0.28) 50%,
+    rgb(255 250 240 / 0.2) 58%,
+    rgb(255 248 235 / 0) 82%,
+    transparent 100%
+  );
+  filter: blur(32px);
+  opacity: 0.4;
+}
+
+@keyframes hero-sunbeam-pass {
+  /* Mid → end; shorter pause so the ray returns sooner */
+  0% {
+    transform: translate3d(40vw, 0, 0) rotate(6deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.55;
+  }
+  36% {
+    opacity: 0.75;
+  }
+  70% {
+    transform: translate3d(95vw, 0, 0) rotate(6deg);
+    opacity: 0.35;
+  }
+  82% {
+    transform: translate3d(108vw, 0, 0) rotate(6deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(108vw, 0, 0) rotate(6deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-sunbeam {
+    width: min(55vw, 16rem);
+  }
+
+  .hero-sunbeam__streak--wide {
+    filter: blur(36px);
+  }
+
+  .hero-sunbeam__streak--thin {
+    filter: blur(24px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-sunbeam {
+    animation: none;
+    opacity: 0;
+  }
+}

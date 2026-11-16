@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 
 import { Header } from "./Header";
 import { HeroImageContainer } from "./HeroImageContainer";
+import { HeroLightStreaks } from "./HeroLightStreaks";
 
 export function Hero() {
   return (
@@ -15,6 +16,9 @@ export function Hero() {
         aria-hidden
         className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(0,0,0,0.62)_0%,rgba(0,0,0,0.38)_28%,rgba(0,0,0,0.14)_55%,transparent_78%)] md:bg-[linear-gradient(90deg,rgba(0,0,0,0.58)_0%,rgba(0,0,0,0.34)_30%,rgba(0,0,0,0.1)_60%,transparent_100%)]"
       />
+
+      {/* Sunlight beam — above image/overlay, below UI */}
+      <HeroLightStreaks />
 
       {/* Header overlays the image — no extra vertical space */}
       <Header />
