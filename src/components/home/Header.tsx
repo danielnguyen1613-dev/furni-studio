@@ -1,11 +1,28 @@
 "use client";
 
-import { Heart, Menu, Search, ShoppingBag } from "lucide-react";
+import { Heart, Menu, Search, ShoppingBag, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import { Logo } from "@/components/Logo";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 import { cn } from "@/lib/utils";
 
 const SCROLL_THRESHOLD = 8;
+
+const NAV_LINKS = [
+  { href: "#products", label: "Products" },
+  { href: "#collections", label: "Collections" },
+  { href: "#inspiration", label: "Inspiration" },
+  { href: "#about", label: "About" },
+] as const;
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -30,15 +47,7 @@ export function Header() {
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
-        <a
-          href="/"
-          className={cn(
-            "font-heading text-base font-bold transition-colors duration-300 md:text-3xl",
-            scrolled ? "text-neutral-900" : "text-white"
-          )}
-        >
-          Luma
-        </a>
+        <Logo className={scrolled ? "text-neutral-900" : "text-white"} />
 
         <nav
           className={cn(
@@ -46,30 +55,15 @@ export function Header() {
             scrolled ? "text-neutral-900" : "text-white"
           )}
         >
-          <a
-            href="#products"
-            className="font-sans text-sm font-medium tracking-wide"
-          >
-            Products
-          </a>
-          <a
-            href="#collections"
-            className="font-sans text-sm font-medium tracking-wide"
-          >
-            Collections
-          </a>
-          <a
-            href="#inspiration"
-            className="font-sans text-sm font-medium tracking-wide"
-          >
-            Inspiration
-          </a>
-          <a
-            href="#about"
-            className="font-sans text-sm font-medium tracking-wide"
-          >
-            About
-          </a>
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="font-sans text-sm font-medium tracking-wide"
+            >
+              {link.label}
+            </a>
+          ))}
         </nav>
 
         <div
@@ -101,13 +95,62 @@ export function Header() {
           </button>
         </div>
 
-        <button
-          type="button"
-          aria-label="Open menu"
-          className="inline-flex size-10 items-center justify-center text-neutral-900 lg:hidden"
-        >
-          <Menu className="size-6" strokeWidth={1.75} aria-hidden />
-        </button>
+        <Drawer swipeDirection="right">
+          <DrawerTrigger
+            render={
+              <button
+                type="button"
+                aria-label="Open menu"
+                className={cn(
+                  "inline-flex size-10 items-center justify-center transition-colors duration-300 lg:hidden",
+                  scrolled ? "text-neutral-900" : "text-white"
+                )}
+              />
+            }
+          >
+            <Menu className="size-6" strokeWidth={1.75} aria-hidden />
+          </DrawerTrigger>
+
+          <DrawerContent className="h-dvh w-[min(100%,20rem)] rounded-none border-0 bg-background data-[swipe-direction=right]:rounded-none sm:w-80">
+            <DrawerHeader className="flex flex-row items-center justify-between gap-4 p-6 text-left">
+              <div>
+                <DrawerTitle className="sr-only">Luma</DrawerTitle>
+                <Logo className="text-foreground" />
+                <DrawerDescription className="sr-only">
+                  Mobile navigation
+                </DrawerDescription>
+              </div>
+              <DrawerClose
+                render={
+                  <button
+                    type="button"
+                    aria-label="Close menu"
+                    className="inline-flex size-10 items-center justify-center text-neutral-900"
+                  />
+                }
+              >
+                <X className="size-5" strokeWidth={1.75} aria-hidden />
+              </DrawerClose>
+            </DrawerHeader>
+
+            <nav className="flex flex-1 flex-col gap-1 px-6 py-10">
+              {NAV_LINKS.map((link) => (
+                <DrawerClose
+                  key={link.href}
+                  nativeButton={false}
+                  render={
+                    <a
+                      href={link.href}
+                      className="font-heading py-4 text-base font-light tracking-wide text-foreground transition-opacity hover:opacity-60"
+                    />
+                  }
+                >
+                  {link.label}
+                </DrawerClose>
+              ))}
+            </nav>
+          </DrawerContent>
+        </Drawer>
       </div>
     </header>
   );
