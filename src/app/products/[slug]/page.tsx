@@ -1,5 +1,3 @@
-import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import {
@@ -9,22 +7,6 @@ import {
 
 export function generateStaticParams() {
   return getAllProductSlugs().map((slug) => ({ slug }));
-}
-
-export async function generateMetadata({
-  params,
-}: PageProps<"/products/[slug]">) {
-  const { slug } = await params;
-  const product = getProductBySlug(slug);
-
-  if (!product) {
-    return { title: "Product not found" };
-  }
-
-  return {
-    title: `${product.name} | Luma`,
-    description: `${product.name} — ${product.price}`,
-  };
 }
 
 export default async function ProductDetailPage({
@@ -38,36 +20,64 @@ export default async function ProductDetailPage({
   }
 
   return (
-    <main className="mx-auto w-full max-w-7xl px-4 py-10 md:px-8 md:py-14">
-      <Link
-        href="/#products"
-        className="font-sans text-sm text-muted-foreground transition-opacity hover:opacity-70"
-      >
-        ← Back to products
-      </Link>
+    <div className="flex min-h-full w-full flex-col">
+      {/* Header */}
+      <header className="h-16 w-full shrink-0 bg-red-500 md:h-20" />
 
-      <div className="mt-8 grid gap-8 md:grid-cols-2 md:gap-12">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-muted">
-          <Image
-            src={product.imageSrc}
-            alt={product.name}
-            fill
-            priority
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover"
-          />
-        </div>
+      <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-4 px-4 py-4 md:gap-6 md:px-8 md:py-6">
+        {/* Breadcrumb */}
+        <div className="h-8 w-full bg-blue-500 md:h-10" />
 
-        <div>
-          <h1 className="font-heading text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
-            {product.name}
-          </h1>
-          <p className="mt-3 font-sans text-lg text-foreground">{product.price}</p>
-          <p className="mt-2 font-sans text-sm text-muted-foreground">
-            {product.rating.toFixed(1)} ({product.reviewCount})
-          </p>
-        </div>
+        {/* Main Product Section */}
+        <section className="grid gap-4 md:gap-6 lg:grid-cols-2">
+          {/* Product Media Area */}
+          <div className="flex flex-col gap-3 bg-yellow-400 p-3 md:gap-4 md:p-4">
+            {/* Main image */}
+            <div className="aspect-[4/3] w-full bg-cyan-400" />
+            {/* Thumbnails */}
+            <div className="grid grid-cols-4 gap-2 md:gap-3">
+              <div className="aspect-square bg-cyan-300" />
+              <div className="aspect-square bg-cyan-300" />
+              <div className="aspect-square bg-cyan-300" />
+              <div className="aspect-square bg-cyan-300" />
+            </div>
+          </div>
+
+          {/* Product Information Area */}
+          <div className="flex flex-col gap-3 bg-green-500 p-3 md:gap-4 md:p-4">
+            {/* Product information */}
+            <div className="min-h-24 flex-1 bg-green-300 md:min-h-32" />
+            {/* Product configuration */}
+            <div className="min-h-28 bg-green-400 md:min-h-36" />
+            {/* Purchase / action */}
+            <div className="min-h-16 bg-green-600 md:min-h-20" />
+          </div>
+        </section>
+
+        {/* Product Benefits / Service Information */}
+        <section className="grid grid-cols-2 gap-3 bg-purple-500 p-3 sm:grid-cols-4 md:gap-4 md:p-4">
+          <div className="min-h-16 bg-purple-300 md:min-h-20" />
+          <div className="min-h-16 bg-purple-300 md:min-h-20" />
+          <div className="min-h-16 bg-purple-300 md:min-h-20" />
+          <div className="min-h-16 bg-purple-300 md:min-h-20" />
+        </section>
+
+        {/* Product Detail Tabs */}
+        <section className="flex h-12 w-full gap-2 bg-orange-500 p-2 md:h-14 md:gap-3 md:p-3">
+          <div className="h-full flex-1 bg-orange-300" />
+          <div className="h-full flex-1 bg-orange-300" />
+          <div className="h-full flex-1 bg-orange-300" />
+          <div className="h-full flex-1 bg-orange-300" />
+        </section>
+
+        {/* Product Overview Section */}
+        <section className="grid gap-4 bg-pink-500 p-3 md:gap-6 md:p-4 lg:grid-cols-2">
+          {/* Left content */}
+          <div className="min-h-48 bg-pink-300 md:min-h-64" />
+          {/* Right large image/content */}
+          <div className="min-h-48 bg-cyan-400 md:min-h-64" />
+        </section>
       </div>
-    </main>
+    </div>
   );
 }
