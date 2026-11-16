@@ -22,16 +22,16 @@ export function Hero() {
       {/* Wireframe content overlays */}
       <div className="pointer-events-none relative z-10 flex h-full flex-col justify-between px-4 pb-6 pt-24 md:px-8 md:pb-8 md:pt-28">
         <div className="mx-auto grid w-full max-w-7xl items-start gap-4 lg:grid-cols-[minmax(220px,1fr)_minmax(0,2fr)] lg:gap-6">
-          <div className="pointer-events-auto flex flex-col justify-start gap-3 self-start pt-2 text-white md:pt-4">
-            <p className="font-sans text-xs font-medium uppercase tracking-[0.28em] text-white md:text-xs">
+          <div className="pointer-events-auto flex flex-col justify-start gap-3 self-start pt-2 text-primary-foreground md:pt-4">
+            <p className="font-sans text-xs font-medium uppercase tracking-[0.28em] text-primary-foreground md:text-xs">
               Modern Furniture
             </p>
-            <h1 className="font-sans text-2xl font-light uppercase text-white sm:text-3xl md:text-6xl">
+            <h1 className="font-sans text-2xl font-light uppercase text-primary-foreground sm:text-3xl md:text-6xl">
               Design
               <br />
               Your Space
             </h1>
-            <p className="mt-1 max-w-sm text-sm font-normal leading-relaxed text-white/80 sm:mt-2 sm:text-base md:max-w-[280px]">
+            <p className="mt-1 max-w-sm text-sm font-normal leading-relaxed text-primary-foreground/80 sm:mt-2 sm:text-base md:max-w-[280px]">
               Contemporary furniture for the way you live, in 3D and in your
               home.
             </p>
