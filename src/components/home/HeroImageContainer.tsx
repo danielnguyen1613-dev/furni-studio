@@ -27,7 +27,7 @@ export function HeroImageContainer() {
         "
       >
         <Image
-          src="/images/hero.jpg"
+          src="/images/hero.webp"
           alt="Modern living room with modular sofa"
           fill
           priority
