@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 
-import { Product3DViewer } from "@/components/product/Product3DViewer";
+import { ProductMainSection } from "@/components/product/ProductMainSection";
 import {
   getAllProductSlugs,
   getProductBySlug,
@@ -39,30 +39,7 @@ export default function ProductDetailPage({
         <div className="h-8 w-full bg-blue-500 md:h-10" />
 
         {/* Main Product Section */}
-        <section className="grid gap-4 md:gap-6 lg:grid-cols-2">
-          {/* Product Media Area */}
-          <div className="flex flex-col gap-3 bg-yellow-400 p-3 md:gap-4 md:p-4">
-            {/* Product visual / 3D viewer */}
-            <Product3DViewer />
-            {/* Thumbnails */}
-            <div className="grid grid-cols-4 gap-2 md:gap-3">
-              <div className="aspect-square bg-cyan-300" />
-              <div className="aspect-square bg-cyan-300" />
-              <div className="aspect-square bg-cyan-300" />
-              <div className="aspect-square bg-cyan-300" />
-            </div>
-          </div>
-
-          {/* Product Information Area */}
-          <div className="flex flex-col gap-3 bg-green-500 p-3 md:gap-4 md:p-4">
-            {/* Product information */}
-            <div className="min-h-24 flex-1 bg-green-300 md:min-h-32" />
-            {/* Product configuration */}
-            <div className="min-h-28 bg-green-400 md:min-h-36" />
-            {/* Purchase / action */}
-            <div className="min-h-16 bg-green-600 md:min-h-20" />
-          </div>
-        </section>
+        <ProductMainSection />
 
         {/* Product Benefits / Service Information */}
         <section className="grid grid-cols-2 gap-3 bg-purple-500 p-3 sm:grid-cols-4 md:gap-4 md:p-4">
