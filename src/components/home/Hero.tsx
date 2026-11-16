@@ -30,7 +30,7 @@ export function Hero() {
       <div className="pointer-events-none relative z-10 flex h-full flex-col justify-between px-4 pb-6 pt-24 md:px-8 md:pb-8 md:pt-28">
         <div className="mx-auto grid w-full max-w-7xl items-start gap-4 lg:grid-cols-[minmax(220px,1fr)_minmax(0,2fr)] lg:gap-6">
           <div className="pointer-events-auto flex flex-col justify-start gap-3 self-start pt-2 text-primary-foreground md:pt-4">
-            <p className="font-sans text-xs font-medium uppercase tracking-[0.28em] text-primary-foreground md:text-xs">
+            <p className="font-sans text-xs font-medium uppercase tracking-[0.38em] text-primary-foreground md:text-xs">
               Modern Furniture
             </p>
             <h1 className="font-sans text-2xl font-light uppercase text-primary-foreground sm:text-3xl md:text-6xl">

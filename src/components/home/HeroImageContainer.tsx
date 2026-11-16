@@ -49,6 +49,7 @@ export function HeroImageContainer() {
           priority
           sizes="100vw"
           className="object-fill"
+          quality={75}
           draggable={false}
         />
       </HeroCoverFrame>

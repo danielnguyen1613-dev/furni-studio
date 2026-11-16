@@ -1,16 +1,35 @@
+import Image from "next/image";
+
 type CollectionCardProps = {
   title: string;
+  imageSrc: string;
+  href?: string;
 };
 
-export function CollectionCard({ title }: CollectionCardProps) {
+export function CollectionCard({
+  title,
+  imageSrc,
+  href = "#",
+}: CollectionCardProps) {
   return (
-    <article className="flex min-h-[200px] flex-col justify-end bg-yellow-300 p-4 md:min-h-[260px]">
-      <div className="mb-auto flex flex-1 items-center justify-center bg-yellow-400 text-xs text-yellow-900">
-        Collection Image Placeholder
-      </div>
-      <div className="mt-3 bg-yellow-500 px-2 py-2 text-sm font-medium text-yellow-950">
+    <a
+      href={href}
+      className="group relative block aspect-[5/4] overflow-hidden rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+    >
+      <Image
+        src={imageSrc}
+        alt={title}
+        fill
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+        className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/45 via-black/15 to-transparent"
+      />
+      <span className="absolute bottom-4 left-4 font-sans text-base font-medium tracking-wide text-white md:bottom-5 md:left-5">
         {title}
-      </div>
-    </article>
+      </span>
+    </a>
   );
 }
