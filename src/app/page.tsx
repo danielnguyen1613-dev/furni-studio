@@ -1,3 +1,4 @@
+import { BestSellers } from "@/components/home/BestSellers";
 import { FeatureBenefits } from "@/components/home/FeatureBenefits";
 import { FeaturedCollections } from "@/components/home/FeaturedCollections";
 import { Hero } from "@/components/home/Hero";
@@ -9,6 +10,7 @@ export default function Home() {
         <Hero />
         <FeatureBenefits />
         <FeaturedCollections />
+        <BestSellers />
       </main>
     </div>
   );
