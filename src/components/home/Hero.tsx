@@ -3,7 +3,7 @@ import { ArrowRight, MoveLeft, MoveRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import { Header } from "./Header";
-import { HeroImageContainer } from "./HeroImageContainer";
+import { HeroHotspots, HeroImageContainer } from "./HeroImageContainer";
 import { HeroLightStreaks } from "./HeroLightStreaks";
 
 export function Hero() {
@@ -19,6 +19,9 @@ export function Hero() {
 
       {/* Sunlight beam — above image/overlay, below UI */}
       <HeroLightStreaks />
+
+      {/* Hotspots share image coords; above overlays so product cards stay crisp */}
+      <HeroHotspots />
 
       {/* Header overlays the image — no extra vertical space */}
       <Header />
