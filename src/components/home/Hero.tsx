@@ -1,5 +1,6 @@
 "use client";
 
+import Autoplay from "embla-carousel-autoplay";
 import { ArrowRight, MoveLeft, MoveRight, Play } from "lucide-react";
 import * as React from "react";
 
@@ -19,6 +20,16 @@ import { HeroLightStreaks } from "./HeroLightStreaks";
 export function Hero() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
+  const [autoplayPlugin] = React.useState(() =>
+    Autoplay({
+      delay: 6000,
+      stopOnInteraction: false,
+      stopOnMouseEnter: true,
+      stopOnFocusIn: false,
+      // Pause when hovering anywhere in the Hero carousel chrome, not only the viewport
+      rootNode: (emblaRoot) => emblaRoot.parentElement,
+    }),
+  );
 
   React.useEffect(() => {
     if (!api) return;
@@ -47,6 +58,7 @@ export function Hero() {
           align: "start",
           duration: 40,
         }}
+        plugins={[autoplayPlugin]}
         className="absolute inset-0 h-full w-full [&_[data-slot=carousel-content]]:absolute [&_[data-slot=carousel-content]]:inset-0 [&_[data-slot=carousel-content]]:h-full [&_[data-slot=carousel-content]>div]:h-full"
       >
         {/* Sliding layer: image + readability gradient + per-slide hotspots */}
