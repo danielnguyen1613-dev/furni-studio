@@ -1,39 +1,27 @@
 "use client";
 
-import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { useMemo } from "react";
+import { Suspense } from "react";
 
 const PRODUCT_MODEL_URL = "/models/product.glb";
 
-interface Product3DViewerProps {
-  modelUrl?: string;
+function FurnitureModel() {
+  const { scene } = useGLTF(PRODUCT_MODEL_URL);
+
+  return <primitive object={scene} />;
 }
 
-function ProductModel({ url }: { url: string }) {
-  const { scene } = useGLTF(url);
-  const clonedScene = useMemo(() => scene.clone(true), [scene]);
-
-  return <primitive object={clonedScene} scale={2.5} />;
-}
-
-export function Product3DViewer({
-  modelUrl = PRODUCT_MODEL_URL,
-}: Product3DViewerProps) {
+export function Product3DViewer() {
   return (
     <div className="h-full min-h-[28rem] w-full flex-1 md:min-h-[36rem]">
       <Canvas
-        camera={{
-          position: [3, 2, 5],
-          fov: 45,
-        }}
+        camera={{ position: [3, 2, 5], fov: 45 }}
         className="h-full w-full"
       >
-        <ambientLight intensity={0.6} />
-        <directionalLight position={[5, 8, 5]} intensity={1.1} />
-        <Environment preset="studio" />
-        <ProductModel url={modelUrl} />
-        <OrbitControls makeDefault />
+        <Suspense fallback={null}>
+          <FurnitureModel />
+        </Suspense>
       </Canvas>
     </div>
   );
