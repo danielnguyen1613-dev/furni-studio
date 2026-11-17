@@ -21,7 +21,7 @@ export function Product3DViewer({
   modelUrl = PRODUCT_MODEL_URL,
 }: Product3DViewerProps) {
   return (
-    <div className="aspect-[4/3] w-full bg-cyan-400">
+    <div className="h-full min-h-[28rem] w-full flex-1 md:min-h-[36rem]">
       <Canvas
         camera={{
           position: [3, 2, 5],
