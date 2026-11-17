@@ -1,6 +1,6 @@
 "use client";
 
-import { useGLTF } from "@react-three/drei";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 
@@ -16,12 +16,22 @@ export function Product3DViewer() {
   return (
     <div className="h-full min-h-[28rem] w-full flex-1 md:min-h-[36rem]">
       <Canvas
-        camera={{ position: [3, 2, 5], fov: 45 }}
+        camera={{
+          position: [3.5, 2.2, 4.5],
+          fov: 30,
+        }}
         className="h-full w-full"
       >
         <Suspense fallback={null}>
           <FurnitureModel />
         </Suspense>
+        <OrbitControls
+          enablePan={false}
+          minDistance={2.5}
+          maxDistance={6}
+          minPolarAngle={Math.PI / 4}
+          maxPolarAngle={Math.PI / 2}
+        />
       </Canvas>
     </div>
   );
